@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F5EDD6;
+  color: #16281F;
+}
+
+@layer components {
+  .input {
+    @apply w-full border-0 border-b border-ink/15 bg-transparent py-2 text-sm text-ink placeholder:text-ink/35 focus:border-gold focus:outline-none;
+  }
+  .hairline-gold {
+    border-color: rgba(176, 141, 76, 0.3);
+  }
+  .text-outline-gold {
+    color: transparent;
+    -webkit-text-stroke: 1px #B08D4C;
+  }
+  .gold-rule {
+    height: 3px;
+    background: linear-gradient(
+      to right,
+      #b08d4c,
+      #8e7239,
+      rgba(176, 141, 76, 0.3)
+    );
+  }
+}
+
+::selection {
+  background-color: #B08D4C;
+  color: #16281F;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 45s linear infinite;
+}
+
+.marquee-track.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
